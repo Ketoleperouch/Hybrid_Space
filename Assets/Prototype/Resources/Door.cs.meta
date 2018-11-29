@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 2e709f9d5b3ce3b45a1dbffc298142bd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_UIElement: {instanceID: 0}
+  - m_LockedTexture: {fileID: 2800000, guid: 877890a6142ecb247bbb60e3cff53fa3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
