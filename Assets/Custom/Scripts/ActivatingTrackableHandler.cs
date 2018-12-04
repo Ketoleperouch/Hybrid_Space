@@ -17,7 +17,10 @@ public class ActivatingTrackableHandler : DefaultTrackableEventHandler
             if (!component.CompareTag("KeepDisabled"))
                 component.enabled = true;
         }
-
+        foreach (var enumAction in GetComponentsInChildren<EnumeratedAnimation>())
+        {
+            enumAction.isTracking = true;
+        }
         onTrackingFound[playIndex].Invoke();
     }
 
@@ -27,8 +30,13 @@ public class ActivatingTrackableHandler : DefaultTrackableEventHandler
 
         foreach (var component in rendererComponents)
             component.enabled = false;
+        foreach (var enumAction in GetComponentsInChildren<EnumeratedAnimation>())
+        {
+            enumAction.isTracking = false;
+        }
 
-        onTrackingLost[playIndex].Invoke();
+        if (onTrackingLost.Length > 0)
+            onTrackingLost[playIndex].Invoke();
     }
 
     public void SetIndex(int index)

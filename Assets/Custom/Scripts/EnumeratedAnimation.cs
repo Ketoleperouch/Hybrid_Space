@@ -6,6 +6,8 @@ public class EnumeratedAnimation : MonoBehaviour {
     public bool isPlaying { get; set; }
     public bool isPaused { get; set; }
     public bool isWaitingForTouch { get; set; }
+    public bool isAutoPaused { get; set; }
+    public bool isTracking { get; set; }
 
     public int playsOnProgress;
     public Animation[] animations;
@@ -28,6 +30,10 @@ public class EnumeratedAnimation : MonoBehaviour {
 
     public void Pause(bool value)
     {
+        if (!value)
+        {
+            isAutoPaused = false;
+        }
         isPaused = value;
     }
 
@@ -43,17 +49,22 @@ public class EnumeratedAnimation : MonoBehaviour {
 
     private void Update()
     {
-        if (isWaitingForTouch)
+        if (!isTracking)
+        {
+            return;
+        }
+        if (isWaitingForTouch && isAutoPaused)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 animations[playingAnimation].skipped = true;
                 isWaitingForTouch = false;
                 isPaused = false;
+                isAutoPaused = false;
             }
             return;
         }
-        if (!isPlaying || isPaused)
+        if (!isPlaying || isPaused || isAutoPaused)
         {
             return;
         }
@@ -107,6 +118,7 @@ public class EnumeratedAnimation : MonoBehaviour {
             if (autoPause && !skipped)
             {
                 root.isWaitingForTouch = true;
+                root.isAutoPaused = true;
                 root.Pause(true);
             }
         }
