@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
 
 public class EnumeratedAnimation : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class EnumeratedAnimation : MonoBehaviour {
     public bool isWaitingForTouch { get; set; }
     public bool isAutoPaused { get; set; }
     public bool isTracking { get; set; }
+    public bool complete { get; set; }
 
     public int playsOnProgress;
     public Animation[] animations;
@@ -18,7 +20,7 @@ public class EnumeratedAnimation : MonoBehaviour {
 
 	public void Play()
     {
-        if (playsOnProgress != StateBehaviour.me.progress)
+        if (playsOnProgress != StateBehaviour.me.progress || complete)
         {
             return;
         }
@@ -49,7 +51,7 @@ public class EnumeratedAnimation : MonoBehaviour {
 
     private void Update()
     {
-        if (!isTracking)
+        if (!isTracking || complete)
         {
             return;
         }
@@ -82,11 +84,12 @@ public class EnumeratedAnimation : MonoBehaviour {
     [System.Serializable]
     public class Animation
     {
-        public enum AnimationMode { Popup_Default, Appear, Popdown_Default, Disappear}
+        public enum AnimationMode { None, Popup_Default, Appear, Popdown_Default, Disappear, PlayAnimation}
 
         public float playTime;
         public GameObject target;
         public AnimationMode animationMode;
+        public string animationName;
         public UnityEvent events;
         public bool autoPause;
 
@@ -111,9 +114,20 @@ public class EnumeratedAnimation : MonoBehaviour {
                     //Target object disappears.
                     target.GetComponent<Renderer>().enabled = false;
                     break;
+                case AnimationMode.PlayAnimation:
+                    Animator animator = target.GetComponent<Animator>();
+                    if (!animator.enabled)
+                    {
+                        animator.enabled = true;
+                    }
+                    target.GetComponent<Animator>().Play(animationName, 0);
+                    break;
+                case AnimationMode.None:
+                    //For example when only events should run.
+                    break;
                 default:
                     //Appear
-                    goto case AnimationMode.Appear;
+                    goto case AnimationMode.None;
             }
             if (autoPause && !skipped)
             {

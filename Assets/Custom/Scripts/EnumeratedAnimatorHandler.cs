@@ -32,4 +32,9 @@ public class EnumeratedAnimatorHandler : MonoBehaviour {
     {
         enumeratedAnimations[index].Pause(false);
     }
+
+    public void Complete(int index)
+    {
+        enumeratedAnimations[index].complete = true;
+    }
 }

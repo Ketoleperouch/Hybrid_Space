@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AR Prototype.unity
     guid: b553fd00010de2d4ca18857de01c641a
+  - enabled: 1
+    path: Assets/Scenes/Storybook/Tutorial.unity
+    guid: 41cb56b5595adbf46a31d6e281e15ad3
   m_configObjects: {}
