@@ -7,6 +7,7 @@ ModelImporter:
     400000: //RootNode
     2100000: Flower
     2100002: Tape
+    2100004: Stem
     2300000: //RootNode
     3300000: //RootNode
     4300000: Ebene_1
@@ -16,6 +17,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Flower
     second: {fileID: 2100000, guid: b3b4651246188d249bdf6277c2561e14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stem
+    second: {fileID: 2100000, guid: 5057d3d2923930541a58e0459a9eeb00, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
