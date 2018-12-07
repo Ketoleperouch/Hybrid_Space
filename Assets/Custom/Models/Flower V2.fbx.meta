@@ -1,32 +1,33 @@
 fileFormatVersion: 2
-guid: 1b84fe5510a4332479d86e14c6ee51dd
+guid: 6159fbfb6fe1fd04fb21577181397262
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Flower
+    100000: Dot
+    100002: //RootNode
+    100004: Petals
+    100006: Stem
+    100008: Tape
+    400000: Dot
+    400002: //RootNode
+    400004: Petals
+    400006: Stem
+    400008: Tape
+    2100000: No Name
     2100002: Tape
-    2100004: Stem
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Ebene_1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Flower
-    second: {fileID: 2100000, guid: b3b4651246188d249bdf6277c2561e14, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stem
-    second: {fileID: 2100000, guid: 5057d3d2923930541a58e0459a9eeb00, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tape
-    second: {fileID: 2100000, guid: 0821f90a57e68394b84dd9c2b8710dff, type: 2}
+    2300000: Dot
+    2300002: Petals
+    2300004: Stem
+    2300006: Tape
+    3300000: Dot
+    3300002: Petals
+    3300004: Stem
+    3300006: Tape
+    4300000: Stem
+    4300002: Dot
+    4300004: Petals
+    4300006: Tape
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
