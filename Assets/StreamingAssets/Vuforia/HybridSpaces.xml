@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Testpage_tag" size="0.280000 0.140000" />
-    <ImageTarget name="HS_Test_Loish" size="0.210000 0.147861" />
+    <ImageTarget name="bucketCode" size="0.450000 0.450000" />
+    <ImageTarget name="Placeholder-Chapter3" size="0.130000 0.130000" />
+    <ImageTarget name="Placeholder-Chapter2" size="0.130000 0.130000" />
+    <ImageTarget name="Placeholder-Chapter1" size="0.130000 0.130000" />
+    <ImageTarget name="Testpage_tag2" size="0.140000 0.134674" />
     <ImageTarget name="HS_Test_PriceTag" size="0.060000 0.083219" />
-    <ImageTarget name="CODE-Trigger-Bird-V1" size="0.020000 0.013011" />
     <ImageTarget name="CODE" size="0.050000 0.050000" />
-    <ImageTarget name="HS_Test_Meeting" size="0.035000 0.033130" />
     <ImageTarget name="HS_Test_Bol" size="8.500000 5.595298" />
   </Tracking>
 </QCARConfig>

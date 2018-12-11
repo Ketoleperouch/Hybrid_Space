@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor;
 
 public class EnumeratedAnimation : MonoBehaviour {
 
@@ -17,6 +16,8 @@ public class EnumeratedAnimation : MonoBehaviour {
     [SerializeField] float playingTime;
 
     private int playingAnimation;
+    private bool fading;
+    private CanvasGroup fadeGroup;
 
 	public void Play()
     {
@@ -51,6 +52,22 @@ public class EnumeratedAnimation : MonoBehaviour {
 
     private void Update()
     {
+        if (fading && fadeGroup && fadeGroup.alpha < 1)
+        {
+            fadeGroup.alpha += Time.deltaTime;
+            fadeGroup.alpha = Mathf.Clamp01(fadeGroup.alpha);
+            return;
+        }
+        if (!fading && fadeGroup && fadeGroup.alpha > 0)
+        {
+            fadeGroup.alpha -= Time.deltaTime;
+            if (fadeGroup.alpha <= 0)
+            {
+                fading = false;
+                fadeGroup = null;
+            }
+            return;
+        }
         if (!isTracking || complete)
         {
             return;
@@ -84,7 +101,7 @@ public class EnumeratedAnimation : MonoBehaviour {
     [System.Serializable]
     public class Animation
     {
-        public enum AnimationMode { None, Popup_Default, Appear, Popdown_Default, Disappear, PlayAnimation}
+        public enum AnimationMode { None, Popup_Default, Appear, Popdown_Default, Disappear, UIFadeIn, UIFadeOut, PlayAnimation}
 
         public float playTime;
         public GameObject target;
@@ -120,7 +137,17 @@ public class EnumeratedAnimation : MonoBehaviour {
                     {
                         animator.enabled = true;
                     }
-                    target.GetComponent<Animator>().Play(animationName, 0);
+                    animator.Play(animationName, 0);
+                    break;
+                case AnimationMode.UIFadeIn:
+                    CanvasGroup fader = target.GetComponent<CanvasGroup>();
+                    root.fadeGroup = fader;
+                    root.fading = true;
+                    break;
+                case AnimationMode.UIFadeOut:
+                    fader = target.GetComponent<CanvasGroup>();
+                    root.fadeGroup = fader;
+                    root.fading = false;
                     break;
                 case AnimationMode.None:
                     //For example when only events should run.
