@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="tracker_01" size="0.100000 0.100000" />
     <ImageTarget name="bucketCode" size="0.450000 0.450000" />
     <ImageTarget name="Placeholder-Chapter3" size="0.130000 0.130000" />
     <ImageTarget name="Placeholder-Chapter2" size="0.130000 0.130000" />
