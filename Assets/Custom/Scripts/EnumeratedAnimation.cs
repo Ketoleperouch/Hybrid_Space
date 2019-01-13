@@ -101,12 +101,13 @@ public class EnumeratedAnimation : MonoBehaviour {
     [System.Serializable]
     public class Animation
     {
-        public enum AnimationMode { None, Popup_Default, Appear, Popdown_Default, Disappear, UIFadeIn, UIFadeOut, PlayAnimation}
+        public enum AnimationMode { None, Popup_Default, Appear, Popdown_Default, Disappear, UIFadeIn, UIFadeOut, PlayAnimation, SetTag, SetAnimationStage}
 
         public float playTime;
         public GameObject target;
         public AnimationMode animationMode;
         public string animationName;
+        public int integer;
         public UnityEvent events;
         public bool autoPause;
 
@@ -122,7 +123,7 @@ public class EnumeratedAnimation : MonoBehaviour {
                     goto case AnimationMode.Appear;
                 case AnimationMode.Appear:
                     //Target object appears.
-                    target.GetComponent<Renderer>().enabled = true;
+                    if (target) target.GetComponent<Renderer>().enabled = true;
                     break;
                 case AnimationMode.Popdown_Default:
                     //Target object shrinks and tilts downwards. For future scripting.
@@ -151,6 +152,14 @@ public class EnumeratedAnimation : MonoBehaviour {
                     break;
                 case AnimationMode.None:
                     //For example when only events should run.
+                    break;
+                case AnimationMode.SetTag:
+                    try { target.tag = animationName; }
+                    catch { Debug.LogException(new System.ArgumentException("Tag \"" + animationName + "\" is not defined. Tag set to Untagged.")); target.tag = "Untagged"; }
+                    break;
+                case AnimationMode.SetAnimationStage:
+                    animator = target.GetComponent<Animator>();
+                    animator.SetInteger(animationName, integer);
                     break;
                 default:
                     //Appear

@@ -15,12 +15,16 @@ public class EnumeratedAnimatorHandler : MonoBehaviour {
 
     public void Play(int index)
     {
+        FindObjectOfType<CameraSettings>().SwitchAutofocus(true);
+        FindObjectOfType<TapHandler>().enabled = false;
         enumeratedAnimations[index].Play();
     }
 
     public void Stop(int index)
     {
         enumeratedAnimations[index].Stop();
+        FindObjectOfType<CameraSettings>().SwitchAutofocus(false);
+        FindObjectOfType<TapHandler>().enabled = true;
     }
 
     public void Pause(int index)
