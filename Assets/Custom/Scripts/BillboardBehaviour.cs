@@ -13,4 +13,15 @@ public class BillboardBehaviour : MonoBehaviour {
     {
         transform.LookAt(m_Camera);
     }
+
+    public void Activate()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.tag = "Untagged";
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }

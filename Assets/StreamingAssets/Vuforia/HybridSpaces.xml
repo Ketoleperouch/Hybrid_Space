@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="level_3_tag" size="0.140000 0.140000" />
-    <ImageTarget name="level2Tag" size="0.140000 0.140000" />
+    <ImageTarget name="level_2_tag" size="1.000000 0.999597" />
+    <ImageTarget name="level_3_tag" size="1.000000 0.999597" />
     <ImageTarget name="level1Tag" size="0.140000 0.140000" />
     <ImageTarget name="Fox_tag" size="0.050000 0.100935" />
     <ImageTarget name="Fox_patter" size="0.080000 0.080000" />
