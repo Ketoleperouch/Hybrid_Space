@@ -9,7 +9,7 @@ public class ForceOnTouch : MonoBehaviour {
         Physics.gravity = transform.root.InverseTransformDirection(new Vector3(0, -9.81f, 0));
     }
 
-    private void OnMouseDown()
+    public void OnTouchDown()
     {
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, force), ForceMode.Impulse);
