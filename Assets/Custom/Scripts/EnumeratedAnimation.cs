@@ -112,7 +112,6 @@ public class EnumeratedAnimation : MonoBehaviour {
         public bool autoPause;
 
         public bool skipped { get; set; }
-        public bool animationPlayed { get; set; }
 
         public void Play(EnumeratedAnimation root)
         {
@@ -135,9 +134,9 @@ public class EnumeratedAnimation : MonoBehaviour {
                     break;
                 case AnimationMode.PlayAnimation:
                     Animator animator = target.GetComponent<Animator>();
-                    if (!animator.enabled && !animationPlayed)
+                    if (!animator.enabled)
                     {
-                        animator.enabled = animationPlayed = true;
+                        animator.enabled = true;
                     }
                     animator.Play(animationName, 0);
                     break;

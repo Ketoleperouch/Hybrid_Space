@@ -11,7 +11,8 @@ public class ForceOnTouch : MonoBehaviour {
 
     public void OnTouchDown()
     {
+        Debug.Log("Invoked OnTouchDown().");
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, force), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
     }
 }
